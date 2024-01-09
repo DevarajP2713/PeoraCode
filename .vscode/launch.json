@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Hosted workbench",
-      "type": "edge",
+      "type": "pwa-chrome",
       "request": "launch",
       "url": "https://{tenantDomain}/_layouts/workbench.aspx",
       "webRoot": "${workspaceRoot}",
@@ -14,10 +14,7 @@
         "webpack:///../../../../src/*": "${webRoot}/src/*",
         "webpack:///../../../../../src/*": "${webRoot}/src/*"
       },
-      "runtimeArgs": [
-        "--remote-debugging-port=9222",
-        "-incognito"
-      ]
+      "runtimeArgs": ["--remote-debugging-port=9222", "-incognito"]
     }
   ]
 }

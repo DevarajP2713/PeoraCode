@@ -257,6 +257,7 @@ const Product = () => {
   } = useContext(PeoraContext);
 
   useEffect(() => {
+    console.log("useEffect_1");
     setPriceHeight(productPriceRef.current.clientHeight + 16);
     setImageHeight(productPriceRef.current.clientHeight + 17 - 95);
     setGridViewHeight(contentDivRef.current.clientHeight);
@@ -2406,17 +2407,26 @@ const Product = () => {
           filteredData[0][2]?.toLowerCase() === "qty"
         ) {
           _uniqueArrayOfData = filteredData.filter((subarray, index, self) => {
-            let currentElement = subarray[1]
-              .split("-")[0]
-              .toString()
-              .toLowerCase();
+            let currentElement = subarray[1].toString().toLowerCase();
             return (
               self.findIndex(
-                (s) =>
-                  s[1].split("-")[0].toString().toLowerCase() === currentElement
+                (s) => s[1].toString().toLowerCase() === currentElement
               ) === index
             );
           });
+
+          // _uniqueArrayOfData = filteredData.filter((subarray, index, self) => {
+          //   let currentElement = subarray[1]
+          //     .split("-")[0]
+          //     .toString()
+          //     .toLowerCase();
+          //   return (
+          //     self.findIndex(
+          //       (s) =>
+          //         s[1].split("-")[0].toString().toLowerCase() === currentElement
+          //     ) === index
+          //   );
+          // });
 
           for (let i: number = 0; _uniqueArrayOfData.length > i; i++) {
             if (i >= 1) {
@@ -3310,12 +3320,14 @@ const Product = () => {
   };
 
   useEffect(() => {
+    console.log("useEffect_2");
     if (allInventoryData && allInventoryData.length > 0) {
       getAllProducts();
     }
   }, [allInventoryData]);
 
   useEffect(() => {
+    console.log("useEffect_3");
     if (selectedProduct && selectedProduct.length > 0) {
       if (selectedProduct[0].StoneDetails) {
         const preparedStoneData = [];
@@ -3412,6 +3424,7 @@ const Product = () => {
   }, [selectedProduct]);
 
   useEffect(() => {
+    console.log("useEffect_4");
     getTotalCost(selectedStonesData);
   }, [
     state.LDMountCost,
